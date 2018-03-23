@@ -10,24 +10,18 @@ import io.swagger.model.Pet;
 import io.swagger.model.UpdatePetRequest;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-03-22T17:03:17.256Z")
 
 @Api(value = "pet", description = "the pet API")
 public interface PetApi {
 
+    @PreAuthorize("#oauth2.hasScope('read')")
     @ApiOperation(value = "Add a new pet to the store", nickname = "addPet", notes = "", authorizations = {
         @Authorization(value = "petstore_auth", scopes = {
             @AuthorizationScope(scope = "write:pets", description = "modify pets in your account"),

@@ -1,0 +1,16 @@
+server:
+  contextPath: /damc-dev/test-composition/1.0.0
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  datasource:
+    platform: hsqldb
+  jackson:
+    date-format: io.swagger.RFC3339DateFormat
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
+
+springfox.documentation.swagger.v2.path: api-docs
